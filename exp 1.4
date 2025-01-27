@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class BankingSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] transactionIDs = {101, 102, 103, 104, 105};
+
+        try {
+            System.out.print("Enter the total balance: ");
+            double totalBalance = scanner.nextDouble();
+
+            System.out.print("Enter the number of account holders: ");
+            int numOfAccountHolders = scanner.nextInt();
+
+            double averageBalance = totalBalance / numOfAccountHolders;
+            System.out.println("Average Account Balance: " + averageBalance);
+
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero. Number of account holders cannot be zero.");
+        } catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
+        } finally {
+            scanner.close(); // Close the scanner to prevent resource leaks
+        }
+    }
+}
